@@ -10,7 +10,7 @@ path="C:\Program Files (x86)\chromedriver.exe"
 rollno_start=12345678912
 rollno_end=12345678915
 driver=webdriver.Chrome(path)
-rollnos=[*range(rollno_start, rollno_end, 1)]
+rollnos=[*range(rollno_start, rollno_end+1, 1)]
 # mgu results page
 driver.get("https://117.239.158.204/exQpMgmt/index.php/public/ResultView_ctrl/")
 # this 2 stmnts are to skip googles security page when visiting mgu results page bcoz mgus page dosen't have https
@@ -31,14 +31,14 @@ for rollno in rollnos:
   driver.find_element_by_xpath("/html/body/center/table/tbody/tr[2]/td/div/table/tbody/tr[2]/td/form/fieldset/table/tbody/tr[6]/td[3]/button").click()
   sleep(4)
   #notavail is just a string which stores the content on the page
-  notavail=driver.find_element_by_xpath("/html/body/center/table/tbody/tr[2]/td/div/table/tbody/tr[4]/td").text
+  avail=driver.find_element_by_xpath("/html/body/center/table/tbody/tr[2]/td/div/table/tbody/tr[4]/td").text
   # if the roll no is invalid this condition will make sure that a screenshot is not taken
-  if notavail =="Result Not Available !!":
-    print(notavail)
+  if avail =="Result Not Available !!":
+    print(avail)
   else:
     driver.get_screenshot_as_file(f"{rollno}.png")
     print(f"{rollno} screenshot taken")
-    print(notavail)
+    print(avail)
 
 print("check the dir for result screenshots")
 driver.quit()
