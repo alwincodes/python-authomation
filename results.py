@@ -29,6 +29,7 @@ for rollno in rollnos:
   search=driver.find_element_by_xpath("/html/body/center/table/tbody/tr[2]/td/div/table/tbody/tr[2]/td/form/fieldset/table/tbody/tr[6]/td[3]/button")
   search.click()
   sleep(4)
+  #notavail is just a string which displays the content on the page
   notavail=driver.find_element_by_xpath("/html/body/center/table/tbody/tr[2]/td/div/table/tbody/tr[4]/td").text
   # if the roll no is invalid this condition will make sure that a screenshot is not taken
   if notavail =="Result Not Available !!":
