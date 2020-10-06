@@ -21,15 +21,16 @@ sleep(4)
 # the for loop repeats for every roll no in the list rollnos
 for rollno in rollnos:
   print(f"getting result for {rollno}")
-  sem = driver.find_element_by_xpath("/html/body/center/table/tbody/tr[2]/td/div/table/tbody/tr[2]/td/form/fieldset/table/tbody/tr[2]/td[3]/select/option[9]")
-  sem.click()
+  #selecting bca 3rd sem
+  driver.find_element_by_xpath("/html/body/center/table/tbody/tr[2]/td/div/table/tbody/tr[2]/td/form/fieldset/table/tbody/tr[2]/td[3]/select/option[9]").click()
+  #clearing field and entering roll no
   prn = driver.find_element_by_xpath("/html/body/center/table/tbody/tr[2]/td/div/table/tbody/tr[2]/td/form/fieldset/table/tbody/tr[4]/td[3]/input")
   prn.clear()
   prn.send_keys(rollno)
-  search=driver.find_element_by_xpath("/html/body/center/table/tbody/tr[2]/td/div/table/tbody/tr[2]/td/form/fieldset/table/tbody/tr[6]/td[3]/button")
-  search.click()
+  #clicking on the search button
+  driver.find_element_by_xpath("/html/body/center/table/tbody/tr[2]/td/div/table/tbody/tr[2]/td/form/fieldset/table/tbody/tr[6]/td[3]/button").click()
   sleep(4)
-  #notavail is just a string which displays the content on the page
+  #notavail is just a string which stores the content on the page
   notavail=driver.find_element_by_xpath("/html/body/center/table/tbody/tr[2]/td/div/table/tbody/tr[4]/td").text
   # if the roll no is invalid this condition will make sure that a screenshot is not taken
   if notavail =="Result Not Available !!":
