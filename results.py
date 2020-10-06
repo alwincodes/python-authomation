@@ -32,10 +32,11 @@ for rollno in rollnos:
   notavail=driver.find_element_by_xpath("/html/body/center/table/tbody/tr[2]/td/div/table/tbody/tr[4]/td").text
   # if the roll no is invalid this condition will make sure that a screenshot is not taken
   if notavail =="Result Not Available !!":
-    print("notavail")
+    print(notavail)
   else:
     driver.get_screenshot_as_file(f"{rollno}.png")
-    print(f"{rollno} screenshot taken 📸 ")
+    print(f"{rollno} screenshot taken")
+    print(notavail)
 
 print("check the dir for result screenshots")
 driver.quit()
